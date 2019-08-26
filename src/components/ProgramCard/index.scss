@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.programCard {
+  display: flex;
+  flex-direction: column;
+  margin-right: 6px;
+  justify-content: space-between;
+  border-radius: 5px;
+  // overflow: hidden;
+  width: 214px;
+  height: 86px;
+  padding: 10px 15px 15px 15px;
+  background-color: #f4f6f8;
+  border: 1px solid red;
+
+  &__logo-box {
+    display: flex;
+    .start-end-time {
+      font-size: 6px;
+      font-family: sans-serif;
+    }
+
+    .tv-radio {
+      color: #accff4;
+    }
+  }
+
+  &__description {
+    .program-description {
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      letter-spacing: 0.375px;
+      margin-top: 8px;
+    }
+  }
+
+  &__progress {
+    height: 4px;
+    z-index: 1;
+
+    .live {
+    }
+  }
+}
