@@ -3,27 +3,12 @@ import ProgramCard from "../ProgramCard/index";
 
 import "./index.scss";
 
-function ProgramsPannel() {
+function ProgramsPannel(props) {
   return (
     <div className="container">
-      <div className="container__block">
-        <ProgramCard />
-      </div>
-      <div className="container__block">
-        <ProgramCard />
-      </div>
-      <div className="container__block">
-        <ProgramCard />
-      </div>
-      <div className="container__block">
-        <ProgramCard />
-      </div>
-      <div className="container__block">
-        <ProgramCard />
-      </div>
-      <div className="container__block">
-        <ProgramCard />
-      </div>
+      {props.channels.map(channel => (
+        <ProgramCard key={channel.id} channel={channel}></ProgramCard>
+      ))}
     </div>
   );
 }

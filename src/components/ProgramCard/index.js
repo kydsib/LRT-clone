@@ -1,59 +1,64 @@
 import React from "react";
-import { IoIosVideocam, GiMicrophone } from "react-icons/io";
-// import { Container, Row, Col } from "react-bootstrap";
+import LRTLogos from "../../../src/images/index";
+import { IoIosVideocam } from "react-icons/io";
+import { GiMicrophone } from "react-icons/gi";
 
-// import lrtTv from "../../images/LRT-Televizija.png";
-// import channelProgramData from "./data";
 import "./index.scss";
 
-// const IMAGES = {
-//   LRT_Opus: "../../images/LRT-Opus.png",
-//   LRT_TELEVIZIJA: "../../images/LRT-Televizija.png",
-//   LRT_Plius: "../../images/LRT-Kultura.png",
-//   LRT_Lituanica: "../../images/LRT-Litaunica.png",
-//   LRT_Radijas: "../../images/LRT-Radijas.png",
-//   LRT_Klasika: "../../images/LRT-Klasika.png"
-// };
-
-function descriptionLength() {
-  // pasirasyti funkcija, kuri ziures kokio ilgio yra aprasymas ir jei
-  // (esamas zodis +  sekantis).length > uz x ? esamas : esamas + sekantis
+function descriptionLength(description, limit = 47) {
+  const newDescription = [];
+  if (description.length > limit) {
+    description.split(" ").reduce((accumulator, cur) => {
+      if (accumulator + cur.length <= limit) {
+        newDescription.push(cur);
+      }
+      return accumulator + cur.length;
+    }, 0);
+    return `${newDescription.join(" ")}`;
+  }
+  return description;
 }
 
-function isRadio() {
-  // ar reikia funkcijos ar per tenrary iseitu prie paciu parametru
-  // {is_radio === 1} <GiMicrophone /> ?  : <IoIosVideocam />
-}
-
-// Paskui reikes <img src={IMAGES[title.raplace(' ', '_')]}
-
-function ProgramCard() {
+function ProgramCard(props) {
   return (
-    <div className="programCard">
-      <div className="ProgramCard__logo-box">
-        <div className="logo">
-          {/* <img src={lrtTv} alt="Logo" width="27px" height="16px" /> */}
+    <div
+      className={`programCard programCard--${props.channel.channel_title
+        .replace(" ", "-")
+        .toLowerCase()}`}
+    >
+      <div
+        className={`programCard__progress programCard__progress--${props.channel.channel_title
+          .replace(" ", "-")
+          .toLowerCase()}`}
+        style={{ width: `${props.channel.proc}%` }}
+      ></div>
+      <div className="programCard__logo-box">
+        <div className="programCard__logo-box--logo">
+          <img
+            src={LRTLogos[props.channel.channel_title.replace(" ", "_")]}
+            alt={props.channel.channel_title}
+            width="18px"
+            height="16px"
+          />
         </div>
-        <div className="start-end-time">
-          <span>21.30 - 22.30</span>
+        <div className="programCard__logo-box--start-end-time">
+          <span>
+            {props.channel.time_start} - {props.channel.time_end}
+          </span>
         </div>
-        <div className="tv-radio">
-          <IoIosVideocam size={24} />
-        </div>
+      </div>
+      <div className="programCard__tv-radio">
+        {props.channel.is_radio === 1 ? (
+          <GiMicrophone size={22} />
+        ) : (
+          <IoIosVideocam size={22} />
+        )}
       </div>
 
       <div className="programCard__description">
         <h3 className="program-description">
-          Nacionaline ekspedicija "Dniepru per Nemuną"
+          {descriptionLength(props.channel.title)}
         </h3>
-      </div>
-      <div className="programCard__progress">
-        <div
-          className="live"
-          // style="{width:${parseInt(channelProgramData.prc), 10}}"
-        >
-          Progres ----55% ----
-        </div>
       </div>
     </div>
   );

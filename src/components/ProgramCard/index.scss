@@ -1,34 +1,147 @@
 *,
 *::before,
 *::after {
-  margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .programCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-right: 6px;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-radius: 5px;
-  // overflow: hidden;
+  overflow: hidden;
   width: 214px;
   height: 86px;
   padding: 10px 15px 15px 15px;
   background-color: #f4f6f8;
-  border: 1px solid red;
+
+  &__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    z-index: 3;
+
+    &--lrt-plius {
+      background-color: #721f47;
+      width: 15%;
+    }
+
+    &--lrt-lituanica {
+      background-color: #007a3b;
+    }
+
+    &--lrt-radijas {
+      background-color: #d92053;
+    }
+
+    &--lrt-televizija {
+      background-color: #00679c;
+    }
+
+    &--lrt-klasika {
+      background-color: #441d56;
+    }
+
+    &--lrt-opus {
+      background-color: #e7792a;
+    }
+  }
+
+  &__tv-radio {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    width: 19px;
+    height: 12px;
+    color: #accff4;
+  }
+
+  &--lrt-plius::after {
+    background-color: #a91b73;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
+
+  &--lrt-lituanica::after {
+    background-color: #6d9b36;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
+
+  &--lrt-radijas::after {
+    background-color: #ea8d7a;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
+
+  &--lrt-televizija::after {
+    background-color: #80bce6;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
+
+  &--lrt-klasika::after {
+    background-color: #c47faa;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
+
+  &--lrt-opus::after {
+    background-color: #f2b12e;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    content: "";
+  }
 
   &__logo-box {
     display: flex;
-    .start-end-time {
-      font-size: 6px;
-      font-family: sans-serif;
-    }
 
-    .tv-radio {
-      color: #accff4;
+    &--logo {
+      margin-right: 20px;
+    }
+    &--start-end-time {
+      font-size: 12px;
+      font-family: sans-serif;
     }
   }
 
